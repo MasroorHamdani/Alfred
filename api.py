@@ -26,7 +26,7 @@ with sr.Microphone() as source:
 
 try:
     text = r.recognize_google(audio)
-    print "you said: " + text
+    print("you said: ", text)
     request.query = text
     response = request.getresponse()
     print(response.read());
