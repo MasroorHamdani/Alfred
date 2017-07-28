@@ -1,6 +1,6 @@
-def append_to_file(text):
+def append_to_file(text, file_name):
 	"""
 	"""
 
-	with open("im_code.txt", "a") as myfile:
+	with open(file_name, "a") as myfile:
 		myfile.write(text)
