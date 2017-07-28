@@ -1,6 +1,3 @@
-from __future__ import print_function
-
-
 class Parser:
     """
     Parser class will be responsible to
