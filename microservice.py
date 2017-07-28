@@ -1,5 +1,7 @@
 # Building microservice
 from socket import *
+from executioner import Executioner
+import re
 
 def server(address):
 	sock = socket(AF_INET, SOCK_STREAM)
@@ -16,10 +18,15 @@ def handler(client):
 		req = client.recv(100)
 		if not req:
 			break
-		n = int(req)
-		print ('comes here')
+		text = str(req).replace('\n', '')
+		if text == 'run':
+			exec_obj = Executioner('Running your command')
+			exec_obj.speak()
+			exec_obj.printText()
+
+		print ('comes here {0}'.format(text))
 		# result = print('call function here')
-		resp = str(n).encode('ascii') + b'\n'
+		resp = str(text).encode('ascii') + b'\n'
 		client.send(resp)
 	print ('closed')
 
