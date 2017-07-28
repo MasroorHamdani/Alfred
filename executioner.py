@@ -24,7 +24,8 @@ class Executioner(object):
 		try:
 			return execfile(self.file_name)
 		except Exception as ex:
-			return ex
+			print("caught exception")
+			return str(ex)
 			
 
 
