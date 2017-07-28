@@ -54,6 +54,3 @@ def add_text(text):
 	"""
 	os.system('wmctrl -a pycharm')
 	keyboard.type(text)
-
-if __name__ == "__main__":
-	manage_keystrokes("enter")
