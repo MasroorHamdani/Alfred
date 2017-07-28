@@ -1,8 +1,11 @@
+import os
+import subprocess
 import pyttsx
 
 class Executioner(object):
-	def __init__(self, text):
+	def __init__(self, text=None, file_name=None):
 		self.text = text
+		self.file_name = file_name
 
 	def speak(self):
 		engine = pyttsx.init()
@@ -13,4 +16,18 @@ class Executioner(object):
 
 	def printText(self):
 		print (self.text)
+
+
+	def run_my_code(self):
+		"""
+		"""
+		try:
+			return execfile(self.file_name)
+		except Exception as ex:
+			return ex
+			
+
+
+
+
 
