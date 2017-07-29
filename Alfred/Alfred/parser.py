@@ -1,4 +1,4 @@
-from manage_keystrokes import manage_keystrokes, copy
+from manage_keystrokes import manage_keystrokes, copy, add_text
 
 class Parser:
     """
@@ -155,7 +155,7 @@ class Parser:
         :param action:
         :return:
         """
-        strp = "while(True)"
+        strp = "while(True):"
         return strp
 
     def import_library(self, import_json):
@@ -189,3 +189,20 @@ class Parser:
         parameter = copy_line_json.get('result').get('parameters')
         line_number = parameter.pop('number')
         return copy(line_number)
+
+    def setup_canvas(self):
+        add_text("import pygame")
+        add_text("screen = pygame.display.set_mode((640, 480))")
+        add_text("screen.fill((0, 0, 0))")
+
+    def draw_circle(self, circle_json):
+        parameter = circle_json.get('result').get('parameters')
+        radius = parameter.pop('radius')
+        add_text("pygame.draw.circle(screen, (0, 0, 255), (320, 240), {0}, 2)".format(radius))
+        add_text("nl tab pygame.display.flip()")
+
+    def draw_line(self, line_json):
+        parameter = line_json.get('result').get('parameters')
+        length = parameter.pop('length')
+        add_text("nl tab pygame.draw.line(screen, (0, 0, 255), (100, 0), (100, {0}))".format(length))
+        add_text("nl tab pygame.display.flip()")

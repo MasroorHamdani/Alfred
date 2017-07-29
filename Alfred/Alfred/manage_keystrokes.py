@@ -45,7 +45,7 @@ def press_keystroke(keystroke):
 	time.sleep(1)
 	os.system('wmctrl -a gedit')
 	keyboard.press(keystroke)
-	time.sleep(0.500)
+	time.sleep(0.200)
 	keyboard.release(keystroke)
 	return
 
