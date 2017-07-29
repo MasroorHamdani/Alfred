@@ -43,7 +43,7 @@ def press_keystroke(keystroke):
 	"""
 	"""
 	time.sleep(1)
-	os.system('wmctrl -a pycharm')
+	os.system('wmctrl -a gedit')
 	keyboard.press(keystroke)
 	time.sleep(0.690)
 	keyboard.release(keystroke)
@@ -52,5 +52,6 @@ def press_keystroke(keystroke):
 def add_text(text):
 	"""
 	"""
-	os.system('wmctrl -a pycharm')
+	os.system('wmctrl -a gedit')
 	keyboard.type(text)
+	manage_keystrokes("enter")
