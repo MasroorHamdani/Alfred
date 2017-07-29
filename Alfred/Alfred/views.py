@@ -32,9 +32,8 @@ class Services(APIView):
         elif 'loop' in action:
             target_code = PARSER.for_loop_statement(request.data)
         elif 'cursor' in action:
-            print(PARSER.cursor_action(action))
+            target_code = PARSER.cursor_action(action)
         else:
             Executioner('Error: Invalid Operation').speak()
-        print(target_code)
         add_text(target_code)
         return HttpResponse({True})
