@@ -11,7 +11,11 @@ class Executioner(object):
 		engine = pyttsx.init()
 		rate = engine.getProperty('rate')
 		engine.setProperty('rate', rate-50)
-		engine.say('Less chit-chat and more demo')
+		if self.text:
+			engine.say(self.text)
+		else:
+			engine.say('Less chit-chat and more demo')
+
 		engine.runAndWait()
 
 	def printText(self):
