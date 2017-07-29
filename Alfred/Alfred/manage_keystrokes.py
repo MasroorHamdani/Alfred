@@ -68,4 +68,17 @@ def add_text(text):
 		keyboard.press('s')
 		keyboard.release('s')
 
+def copy(line):
+	"""
 
+	:param line:
+	:return:
+	"""
+	os.system('wmctrl -a gedit')
+
+	f = open("target.py", "r+")
+	lines = f.readlines()
+	line_to_copy = lines[line-1]
+
+	manage_keystrokes("enter")
+	add_text(line_to_copy)
