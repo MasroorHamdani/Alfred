@@ -228,7 +228,7 @@ def loop_condition_data():
           "result": {
             "source": "agent",
             "resolvedQuery": "repeat this 3 times",
-            "action": "loop",
+            "action": " ",
             "actionIncomplete": False,
             "parameters": {
               "range": "3"
@@ -351,3 +351,73 @@ def loop_end_data():
           },
           "sessionId": "09ee3a6b-895d-403d-9e04-69256f6f7b9f"
         }
+
+
+def cursor_back_space():
+    return {
+        "result": {
+            "action": "cursor_backspace",
+            "parameters": {}
+        }
+    }
+
+
+def cursor_up():
+    return {
+        "result": {
+            "action": "cursor_up",
+            "parameters": {}
+        }
+    }
+
+
+def cursor_down():
+    return {
+        "result": {
+            "action": "cursor_down",
+            "parameters": {}
+        }
+    }
+
+
+def cursor_left():
+    return {
+        "result": {
+            "action": "cursor_left",
+            "parameters": {}
+        }
+    }
+def cursor_right():
+    return {
+        "result": {
+            "action": "cursor_right",
+            "parameters": {}
+        }
+    }
+
+
+def cursor_enter():
+    return {
+        "result": {
+            "action": "cursor_enter",
+            "parameters": {}
+        }
+    }
+
+
+def cursor_space():
+    return {
+        "result": {
+            "action": "cursor_space",
+            "parameters": {}
+        }
+    }
+
+
+def cursor_tab():
+    return {
+        "result": {
+            "action": "cursor_tab",
+            "parameters": {}
+        }
+    }

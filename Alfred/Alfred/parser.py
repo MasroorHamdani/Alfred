@@ -91,7 +91,7 @@ class Parser:
             str += 'tab' + action_list[0] + ' = ' + action_list[len(action_list) - 1]
         return str
 
-    def for_loop_statement(self,for_loop_json):
+    def for_loop_statement(self, for_loop_json):
         """
         Format Supported:
         For loops start condition
@@ -115,4 +115,37 @@ class Parser:
         if action in 'end_loop':
             manage_keystrokes('enter')
             manage_keystrokes('backspace')
+            self.for_loop_content += '\n'
         return self.for_loop_content
+
+    def cursor_action(self, action):
+        """
+        Format supported:
+        Back space from keyboard
+        Up Arrow key from Keyboard
+        Down Arrow key from Keyboard
+        Right Arrow key from Keyboard
+        Left Arrow key from Keyboard
+        Enter key from Keyboard
+        Space key from Keyboard
+        Tab key from Keyboard
+        :param action:
+        :return:
+        """
+        if 'cursor_backspace' in action:
+            manage_keystrokes('space')
+        if 'cursor_up' in action:
+            manage_keystrokes('up')
+        if 'cursor_down' in action:
+            manage_keystrokes('down')
+        if 'cursor_left' in action:
+            manage_keystrokes('left')
+        if 'cursor_right' in action:
+            manage_keystrokes('right')
+        if 'cursor_enter' in action:
+            manage_keystrokes('enter')
+        if 'cursor_space' in action:
+            manage_keystrokes('space')
+        if 'cursor_tab' in action:
+            manage_keystrokes('tab')
+        return

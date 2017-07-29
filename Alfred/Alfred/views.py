@@ -15,8 +15,6 @@ class Services(APIView):
         :param request:
         :return:
         """
-        print('check')
-        print(request.data)
         PARSER = Parser()
         action = request.data.get('result').get('action')
         if action == 'run':
@@ -33,6 +31,10 @@ class Services(APIView):
             target_code = PARSER.if_statement(request.data)
         elif 'loop' in action:
             target_code = PARSER.for_loop_statement(request.data)
+        elif 'cursor' in action:
+            print(PARSER.cursor_action(action))
+        else:
+            Executioner('Error: Invalid Operation').speak()
         print(target_code)
         add_text(target_code)
         return HttpResponse({True})
