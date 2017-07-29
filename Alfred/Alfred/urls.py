@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from views import call_service
+from views import Services
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^parse/', call_service)
+    url(r'^parse/', Services.as_view())
 ]

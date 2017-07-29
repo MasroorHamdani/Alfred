@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,16 @@ TEMPLATES = [
         },
     },
 ]
+
+# Setting default renderer for all apis to JSONRenderer
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_METADATA_CLASS': None
+}
+
+
 
 WSGI_APPLICATION = 'Alfred.wsgi.application'
 
