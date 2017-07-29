@@ -16,9 +16,6 @@ class Services(APIView):
         """
         PARSER = Parser()
         action = request.data.get('result').get('action')
-        if action == 'wakeup':
-            e = Executioner(text="Good evening everyone")
-            return HttpResponse({True}) 
         if action == 'run':
             e = Executioner(file_name="target.py")
             print(e.run_my_code())
