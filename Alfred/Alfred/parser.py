@@ -1,3 +1,6 @@
+from manage_keystrokes import manage_keystrokes
+
+
 class Parser:
     """
     Parser class will be responsible to
@@ -65,23 +68,27 @@ class Parser:
         condition = parameter.pop('condition')
         cond_list = condition.split(' ')
         if 'less than' in condition and 'equal to' in condition:
-            str = 'if ' + cond_list[0] + '<=' + cond_list[len(cond_list)-1] + ':\n'
+            str = 'if ' + cond_list[0] + '<=' + cond_list[len(cond_list)-1] + ':' + 'nl'
+            manage_keystrokes('enter')
         elif 'greater than' in condition and 'equal to' in condition:
-            str = 'if ' + cond_list[0] + '>=' + cond_list[len(cond_list)-1] + ':\n'
+            str = 'if ' + cond_list[0] + '>=' + cond_list[len(cond_list)-1] + ':' + 'nl'
         elif 'less than' in condition:
-            str = 'if ' + cond_list[0] + '<' + cond_list[len(cond_list)-1] + ':\n'
+            str = 'if ' + cond_list[0] + '<' + cond_list[len(cond_list)-1] + ':' + 'nl'
+            manage_keystrokes('enter')
         elif 'greater than' in condition:
-            str = 'if ' + cond_list[0] + '>' + cond_list[len(cond_list) - 1] + ':\n'
+            str = 'if ' + cond_list[0] + '>' + cond_list[len(cond_list) - 1] + ':' + 'nl'
+            manage_keystrokes('enter')
         elif 'not equal to' in condition:
-            str = 'if ' + cond_list[0] + '!=' + cond_list[len(cond_list) - 1] + ':\n'
+            str = 'if ' + cond_list[0] + '!=' + cond_list[len(cond_list) - 1] + ':' + 'nl'
+            manage_keystrokes('enter')
         elif 'equal to' in condition:
-            str = 'if ' + cond_list[0] + '==' + cond_list[len(cond_list) - 1] + ':\n'
-
+            str = 'if ' + cond_list[0] + '==' + cond_list[len(cond_list) - 1] + ':' + 'nl'
+            manage_keystrokes('enter')
         else:
             str = "Error: Invalid Operation"
 
         if 'Error' not in str:
-            str += '    ' + action_list[0] + ' = ' + action_list[len(action_list) - 1]
+            str += 'tab' + action_list[0] + ' = ' + action_list[len(action_list) - 1]
         return str
 
     def for_loop_statement(self,for_loop_json):
@@ -96,11 +103,16 @@ class Parser:
         action = for_loop_json.get('result').get('action')
         parameter = for_loop_json.get('result').get('parameters')
         if action in 'loop':
-            self.for_loop_content = 'for number in range(1,' + parameter.pop('range') + '):\n'
+            self.for_loop_content = 'for number in range(1,' + parameter.pop('range') + '):' + 'nl' + 'tab'
         if 'print' in action:
-            self.for_loop_content += '    ' + self.print_statement(for_loop_json) + '\n'
+            manage_keystrokes('tab')
+            self.for_loop_content += self.print_statement(for_loop_json)
+            manage_keystrokes('enter')
         if 'assign' in action:
-            self.for_loop_content += '    ' + self.assign_statement(for_loop_json) + '\n'
+            manage_keystrokes('tab')
+            self.for_loop_content += self.assign_statement(for_loop_json)
+            manage_keystrokes('enter')
         if action in 'end_loop':
-            self.for_loop_content += '\n'
+            manage_keystrokes('enter')
+            manage_keystrokes('backspace')
         return self.for_loop_content

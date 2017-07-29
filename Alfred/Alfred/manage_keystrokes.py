@@ -45,7 +45,7 @@ def press_keystroke(keystroke):
 	time.sleep(1)
 	os.system('wmctrl -a gedit')
 	keyboard.press(keystroke)
-	time.sleep(0.690)
+	time.sleep(0.500)
 	keyboard.release(keystroke)
 	return
 
@@ -53,5 +53,18 @@ def add_text(text):
 	"""
 	"""
 	os.system('wmctrl -a gedit')
-	keyboard.type(text)
+	time.sleep(1)
+	if "nl" in text:
+		keyboard.type(text.split("nl")[0])
+		manage_keystrokes("enter")
+		manage_keystrokes("tab")
+		keyboard.type(text.split("tab")[1])
+	else:
+		keyboard.type(text)
 	manage_keystrokes("enter")
+
+	with keyboard.pressed(Key.ctrl):
+		keyboard.press('s')
+		keyboard.release('s')
+
+
