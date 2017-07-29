@@ -11,7 +11,6 @@ class Services(APIView):
     """
     def post(self, request):
         """
-
         :param request:
         :return:
         """
@@ -19,7 +18,7 @@ class Services(APIView):
         action = request.data.get('result').get('action')
         if action == 'wakeup':
             e = Executioner(text="Good evening everyone")
-            HttpResponse({True}) 
+            return HttpResponse({True}) 
         if action == 'run':
             e = Executioner(file_name="target.py")
             print(e.run_my_code())
