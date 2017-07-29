@@ -1,5 +1,4 @@
-from manage_keystrokes import manage_keystrokes
-
+from manage_keystrokes import manage_keystrokes, copy
 
 class Parser:
     """
@@ -48,12 +47,12 @@ class Parser:
         action = assignment_json.get('result').get('action')
         parameter = assignment_json.get('result').get('parameters')
         if action in 'assign_var_to_var':
-            str = parameter.pop('source_var') + ' = ' + parameter.pop('target_var')
+            strp = parameter.pop('source_var') + ' = ' + parameter.pop('target_var')
         elif action in 'assign_val_to_var':
-            str = parameter.pop('variable') + ' = ' + parameter.pop('value')
+            strp = parameter.pop('variable') + ' = ' + parameter.pop('value')
         else:
-            str = "Error: Invalid Operation"
-        return str
+            strp = "Error: Invalid Operation"
+        return strp
 
     def if_statement(self, if_json):
         """
@@ -149,3 +148,44 @@ class Parser:
         if 'cursor_tab' in action:
             manage_keystrokes('tab')
         return
+
+    def infinite_loop(self, action):
+        """
+        Runs an infinite loop
+        :param action:
+        :return:
+        """
+        strp = "while(True)"
+        return strp
+
+    def import_library(self, import_json):
+        """
+        Accept file name and return import statement for that file
+        in format
+        import filename
+        """
+        parameter = import_json.get('result').get('parameters')
+        strp = "import" + parameter.pop('library')
+        return strp
+
+    def from_import_library(self, import_json):
+        """
+        Accept file name and return import statement for that file
+        in format
+        from file import module
+        """
+        parameter = import_json.get('result').get('parameters')
+        strp = "from " + parameter.pop('library') + "import *"
+        return strp
+
+    def copy_line(self, copy_line_json):
+        """
+        Params passed will be line number
+        which will be passed to manage_leystroke and that will
+        create a copy of that line and paste it.
+        :param copy_line_json:
+        :return:
+        """
+        parameter = copy_line_json.get('result').get('parameters')
+        line_number = parameter.pop('number')
+        return copy(line_number)

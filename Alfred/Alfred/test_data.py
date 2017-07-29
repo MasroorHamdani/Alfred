@@ -421,3 +421,12 @@ def cursor_tab():
             "parameters": {}
         }
     }
+
+
+def import_json():
+    return {
+        "result": {
+            "action": "import",
+            "parameters": {"library": "pygame"}
+        }
+    }

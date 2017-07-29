@@ -32,6 +32,14 @@ class Services(APIView):
             target_code = PARSER.for_loop_statement(request.data)
         elif 'cursor' in action:
             target_code = PARSER.cursor_action(action)
+        elif 'infinite_loop' in action:
+            target_code = PARSER.infinite_loop(action)
+        elif 'import' in action:
+            target_code = PARSER.import_library(request.data)
+        elif 'import_from' in action:
+            target_code = PARSER.from_import_library(request.data)
+        elif 'copy' in action:
+            target_code = PARSER.copy_line(request.data)
         else:
             Executioner('Error: Invalid Operation').speak()
         add_text(target_code)
