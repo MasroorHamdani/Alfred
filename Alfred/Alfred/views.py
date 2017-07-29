@@ -24,23 +24,29 @@ class Services(APIView):
             Executioner('Please repeat your command').speak()
         if 'print' in action:
             target_code  = PARSER.print_statement(request.data)
+            add_text(target_code)
         elif 'assign' in action:
             target_code = PARSER.assign_statement(request.data)
+            add_text(target_code)
         elif 'conditon_if' in action:
             target_code = PARSER.if_statement(request.data)
+            add_text(target_code)
         elif 'loop' in action:
             target_code = PARSER.for_loop_statement(request.data)
+            add_text(target_code)
         elif 'cursor' in action:
-            target_code = PARSER.cursor_action(action)
+            PARSER.cursor_action(action)
         elif 'infinite_loop' in action:
             target_code = PARSER.infinite_loop(action)
+            add_text(target_code)
         elif 'import' in action:
             target_code = PARSER.import_library(request.data)
+            add_text(target_code)
         elif 'import_from' in action:
             target_code = PARSER.from_import_library(request.data)
+            add_text(target_code)
         elif 'copy' in action:
-            target_code = PARSER.copy_line(request.data)
+            PARSER.copy_line(request.data)
         else:
             Executioner('Error: Invalid Operation').speak()
-        add_text(target_code)
         return HttpResponse({True})

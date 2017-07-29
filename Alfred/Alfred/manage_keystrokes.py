@@ -75,10 +75,12 @@ def copy(line):
 	:return:
 	"""
 	os.system('wmctrl -a gedit')
-
 	f = open("target.py", "r+")
 	lines = f.readlines()
-	line_to_copy = lines[line-1]
+	line_to_copy = lines[int(line)-1]
 
 	manage_keystrokes("enter")
-	add_text(line_to_copy)
+	try:
+		add_text(line_to_copy)
+	except Key.InvalidCharacterException:
+		return
