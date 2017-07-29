@@ -387,6 +387,8 @@ def cursor_left():
             "parameters": {}
         }
     }
+
+
 def cursor_right():
     return {
         "result": {

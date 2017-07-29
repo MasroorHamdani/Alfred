@@ -23,7 +23,7 @@ class Services(APIView):
         if 'input.unknown' in action:
             Executioner('Please repeat your command').speak()
         if 'print' in action:
-            target_code  = PARSER.print_statement(request.data)
+            target_code = PARSER.print_statement(request.data)
             add_text(target_code)
         elif 'assign' in action:
             target_code = PARSER.assign_statement(request.data)

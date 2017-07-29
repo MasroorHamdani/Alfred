@@ -198,7 +198,7 @@ class Parser:
     def draw_circle(self, circle_json):
         parameter = circle_json.get('result').get('parameters')
         radius = parameter.pop('radius')
-        add_text("pygame.draw.circle(screen, (0, 0, 255), (320, 240), {0}, 2)".format(radius))
+        add_text("pygame.draw.circle(screen, (255, 255, 255), (320, 240), {0}, 2)".format(radius))
         add_text("nl tab pygame.display.flip()")
 
     def draw_line(self, line_json):
