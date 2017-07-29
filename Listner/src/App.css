@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -21,4 +21,36 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.App-Body{
+  background: url('./bot.jpg');
+  height:535px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.App-Body div{
+  border: 1px solid;
+}
+
+.App-Body h2{
+  position: absolute;
+  margin-top: 150px;
+  left: 150px;
+}
+
+.App-Body button{
+  position: absolute;
+  margin-top: 200px;
+  left: 200px;
+  width: 32px;
+  cursor: pointer;
+  height:31px;
+  border-radius: 5px;
+  border : 1px dashed; 
+  background: #ffffff;
+  background-image: url('./mic2.png');
+  background-size: 30px;
+  background-repeat: no-repeat;
 }
