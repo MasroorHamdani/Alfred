@@ -133,7 +133,7 @@ class Parser:
         :return:
         """
         if 'cursor_backspace' in action:
-            manage_keystrokes('space')
+            manage_keystrokes('backspace')
         if 'cursor_up' in action:
             manage_keystrokes('up')
         if 'cursor_down' in action:
