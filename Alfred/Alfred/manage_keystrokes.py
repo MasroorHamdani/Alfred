@@ -54,14 +54,15 @@ def add_text(text):
 	"""
 	os.system('wmctrl -a gedit')
 	time.sleep(1)
-	if "nl" in text:
-		keyboard.type(text.split("nl")[0])
+	if text:
+		if "nl" in text:
+			keyboard.type(text.split("nl")[0])
+			manage_keystrokes("enter")
+			manage_keystrokes("tab")
+			keyboard.type(text.split("tab")[1])
+		else:
+			keyboard.type(text)
 		manage_keystrokes("enter")
-		manage_keystrokes("tab")
-		keyboard.type(text.split("tab")[1])
-	else:
-		keyboard.type(text)
-	manage_keystrokes("enter")
 
 	with keyboard.pressed(Key.ctrl):
 		keyboard.press('s')
